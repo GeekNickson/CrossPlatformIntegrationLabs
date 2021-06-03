@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root xmlns="urn:ns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ns schema.xsd">
+  <doctors>
+    <doctor id="eugene" specialty_ref="neurology" services_ref="treatment super">
+      <first_name>Евгений</first_name>
+      <last_name>Гений</last_name>
+      <age>25</age>
+      <category>Первая</category>
+      <experience>1</experience>
+      <vacation_start>2021-06-01</vacation_start>
+      <vacation_end>2021-06-30</vacation_end>
+    </doctor>
+
+    <doctor id="dimitry" specialty_ref="therapy" services_ref="diagnostic">
+      <first_name>Димитрий</first_name>
+      <last_name>Ракета</last_name>
+      <age>35</age>
+      <category>Вторая</category>
+      <experience>1</experience>
+      <vacation_start>2021-05-01</vacation_start>
+      <vacation_end>2021-05-30</vacation_end>
+    </doctor>
+
+    <doctor id="chip" specialty_ref="cat" services_ref="catt">
+      <first_name>Чип</first_name>
+      <last_name>Принглс</last_name>
+      <age>15</age>
+      <category>Высшая</category>
+      <experience>1</experience>
+      <vacation_start>2021-05-01</vacation_start>
+      <vacation_end>2021-05-30</vacation_end>
+    </doctor>
+  </doctors>
+
+  <services>
+    <service id="diagnostic" price="1500" doctor_ref="dimitry">
+      <name>Диагностика</name>
+    </service>
+    <service id="treatment" price="5000" doctor_ref="eugene">
+      <name>Лечение</name>
+    </service>
+    <service id="super" price="5000" doctor_ref="eugene">
+      <name>Лечение всех расстройств</name>
+    </service>
+    <service id="cat" price="10000" doctor_ref="chip">
+      <name>Я кить</name>
+    </service>
+  </services>
+
+  <specialties>
+    <specialty id="neurology" doctor_ref="eugene">
+      <name>Неврология</name>
+    </specialty>
+    <specialty id="therapy" doctor_ref="dimitry">
+      <name>Терапия</name>
+    </specialty>
+    <specialty id="catt" doctor_ref="chip">
+      <name>Я кить</name>
+    </specialty>
+  </specialties>
+</root>
