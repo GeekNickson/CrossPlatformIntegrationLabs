@@ -1,0 +1,22 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.error {
+  min-height: 10vh;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error p {
+  font-size: 1.5rem;
+}

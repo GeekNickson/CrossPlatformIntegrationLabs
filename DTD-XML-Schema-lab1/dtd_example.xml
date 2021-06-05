@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE root SYSTEM "schema.dtd">
+
+<root href="home_link">
+  <doctors>
+    <doctor id="eugene" specialty_id="neurology" services="diagnostic treatment">
+      <first_name>Евгений</first_name>
+      <last_name>Гений</last_name>
+      <age>25</age>
+      <category>&first;</category>
+      <experience>1</experience>
+      <vacation_start>2021-06-01</vacation_start>
+      <vacation_end>2021-06-30</vacation_end>
+    </doctor>
+  </doctors>
+  <services>
+    <service id="diagnostic" price="1500">
+      <name>Диагностика</name>
+    </service>
+    <service id="treatment" price="1500">
+      <name>Лечение</name>
+    </service>
+  </services>
+  <specialties>
+    <specialty id="neurology">
+      <name>Неврология</name>
+    </specialty>
+  </specialties>
+  <patients></patients>
+</root>

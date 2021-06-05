@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="urn:ns" targetNamespace="urn:ns" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="doctors" type="doctors" minOccurs="0" />
+        <xs:element name="specialties" type="specialties" minOccurs="0" />
+        <xs:element name="services" type="services" minOccurs="0" />
+        <xs:element name="patients" type="patients" minOccurs="0" />
+      </xs:all>
+    </xs:complexType>
+    <xs:key name="doctor_ref">
+      <xs:selector xpath="doctors/doctor"/>
+      <xs:field xpath="@id" />
+    </xs:key>
+    <xs:key name="specialty_ref">
+      <xs:selector xpath="specialties/specialty" />
+      <xs:field xpath="@id" />
+    </xs:key>
+    <xs:key name="services_ref">
+      <xs:selector xpath="services/service" />
+      <xs:field xpath="@id" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="doctors">
+    <xs:sequence>
+      <xs:element name="doctor" type="doctor" maxOccurs="unbounded">
+        <xs:keyref name="specialty" refer="specialty_ref">
+          <xs:selector xpath="doctor" />
+          <xs:field xpath="@specialty_ref" />
+        </xs:keyref>
+        <xs:keyref name="service" refer="services_ref">
+          <xs:selector xpath="doctor" />
+          <xs:field xpath="@services_ref" />
+        </xs:keyref>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="specialties">
+    <xs:sequence>
+      <xs:element name="specialty" type="specialty" maxOccurs="unbounded" >
+        <xs:keyref name="specialty_doctor" refer="doctor_ref">
+          <xs:selector xpath="specialty" />
+          <xs:field xpath="@doctor_ref" />
+        </xs:keyref>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="services">
+    <xs:sequence>
+      <xs:element name="service" type="service"  maxOccurs="unbounded">
+        <xs:keyref name="service_doctor" refer="doctor_ref">
+          <xs:selector xpath="service" />
+          <xs:field xpath="@doctor_ref" />
+        </xs:keyref>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="patients">
+    <xs:sequence>
+      <xs:element name="patient" type="patient" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="specialty">
+    <xs:all>
+      <xs:element name="name" type="xs:string" />
+    </xs:all>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+    <xs:attribute name="doctor_ref" type="xs:IDREF" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="service">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+    <xs:attribute name="price" type="currency" use="required" />
+    <xs:attribute name="doctor_ref" type="xs:IDREF" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="person" abstract="true">
+    <xs:sequence>
+      <xs:element name="first_name" type="xs:string" />
+      <xs:element name="last_name" type="xs:string" />
+      <xs:element name="age" type="age" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="patient">
+    <xs:complexContent>
+      <xs:extension base="person">
+        <xs:attribute name="insured" type="xs:boolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="doctor">
+    <xs:complexContent>
+      <xs:extension base="person">
+        <xs:sequence>
+          <xs:element name="category" type="category" />
+          <xs:element name="experience" type="xs:unsignedShort" />
+          <xs:element name="vacation_start" type="xs:date" />
+          <xs:element name="vacation_end" type="xs:date" />
+        </xs:sequence>
+        <xs:attribute name="specialty_ref" type="xs:IDREF" use="required" />
+        <xs:attribute name="services_ref" type="xs:IDREFS" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="age">
+    <xs:restriction base="xs:short">
+      <xs:minInclusive value="1" />
+      <xs:maxInclusive value="100" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="category">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Первая" />
+      <xs:enumeration value="Вторая" />
+      <xs:enumeration value="Третья" />
+      <xs:enumeration value="Высшая" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="currency">
+    <xs:restriction base="xs:decimal">
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

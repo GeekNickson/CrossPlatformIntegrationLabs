@@ -1,0 +1,34 @@
+<!ELEMENT root (doctors*, specialties*, services*, patients*)*>
+<!ELEMENT doctors (doctor*)>
+<!ELEMENT specialties (specialty*)>
+<!ELEMENT services (service*)>
+<!ELEMENT patients (patient*)>
+<!ELEMENT patient (first_name, last_name, age)>
+<!ELEMENT doctor (first_name, last_name, age, category, experience,  vacation_start, vacation_end)>
+<!ELEMENT specialty ( name )>
+<!ELEMENT service ( name )>
+<!ELEMENT name ( #PCDATA )>
+<!ELEMENT price ( #PCDATA )>
+<!ELEMENT first_name ( #PCDATA )>
+<!ELEMENT last_name ( #PCDATA )>
+<!ELEMENT age ( #PCDATA )>
+<!ELEMENT vacation_start ( #PCDATA )>
+<!ELEMENT vacation_end ( #PCDATA )>
+<!ELEMENT day ( #PCDATA )>
+<!ELEMENT category ( #PCDATA )>
+<!ELEMENT experience ( #PCDATA )>
+<!ATTLIST specialty id ID #REQUIRED>
+<!ATTLIST service id ID #REQUIRED>
+<!ATTLIST service price CDATA #REQUIRED>
+<!ATTLIST doctor id ID #REQUIRED>
+<!ATTLIST schedule id ID #REQUIRED>
+<!ATTLIST doctor specialty_id IDREF #REQUIRED>
+<!ATTLIST doctor services IDREFS #IMPLIED>
+<!ATTLIST service type CDATA "%default_service">
+<!ATTLIST root href CDATA #REQUIRED>
+<!ENTITY first "Первая">
+<!ENTITY second "Вторая">
+<!ENTITY third "Третья">
+<!ENTITY phd "Высшая">
+<!ENTITY % default_service "therapy">
+<!ENTITY home_link SYSTEM "https://ispi.cdo.vlsu.ru/">

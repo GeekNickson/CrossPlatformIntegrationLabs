@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "doctors": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "firstName": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 255
+            },
+            "lastName": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 255
+            },
+            "age": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "category": {
+              "type": "string",
+              "enum": ["Первая", "Вторая", "Третья", "Высшая"]
+            },
+            "experience": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "vacationStart": {
+              "type": "string"
+            },
+            "vacationEnd": {
+              "type": "string"
+            },
+            "onVacation": {
+              "type": "boolean"
+            },
+            "specialty": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 255
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ]
+            },
+            "services": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 2,
+                      "maxLength": 255
+                    },
+                    "price": {
+                      "type": "number",
+                      "minimum": 1
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "price"
+                  ]
+                }
+              ],
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "id",
+            "firstName",
+            "lastName",
+            "age",
+            "category",
+            "experience",
+            "vacationStart",
+            "vacationEnd",
+            "specialty"
+          ]
+        }
+      ],
+      "required": [
+        "doctors"
+      ]
+    }
+  }
+}

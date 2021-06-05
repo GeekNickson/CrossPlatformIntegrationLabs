@@ -1,0 +1,75 @@
+{
+  "doctors": [
+    {
+      "id": "eugene",
+      "firstName": "Евгений",
+      "lastName": "Гений",
+      "age": 25,
+      "category": "Первая",
+      "experience": 1,
+      "vacationStart": "2021-06-01",
+      "vacationEnd": "2021-06-30",
+      "onVacation": true,
+      "specialty": {
+        "id": "neurology",
+        "name": "Неврология"
+      },
+      "services": [
+        {
+          "id": "treatment",
+          "name": "Лечение",
+          "price": 5000
+        },
+        {
+          "id": "super",
+          "name": "Лечение всех расстройств",
+          "price": 5000
+        }
+      ]
+    },
+    {
+      "id": "dimitry",
+      "firstName": "Димитрий",
+      "lastName": "Ракета",
+      "age": 35,
+      "category": "Вторая",
+      "experience": 1,
+      "vacationStart": "2021-05-01",
+      "vacationEnd": "2021-05-30",
+      "onVacation": false,
+      "specialty": {
+        "id": "therapy",
+        "name": "Терапия"
+      },
+      "services": [
+        {
+          "id": "diagnostic",
+          "name": "Диагностика",
+          "price": 1500
+        }
+      ]
+    },
+    {
+      "id": "chip",
+      "firstName": "Чип",
+      "lastName": "Принглс",
+      "age": 15,
+      "category": "Высшая",
+      "experience": 1,
+      "vacationStart": "2021-05-01",
+      "vacationEnd": "2021-05-30",
+      "onVacation": false,
+      "specialty": {
+        "id": "catt",
+        "name": "Я кить"
+      },
+      "services": [
+        {
+          "id": "cat",
+          "name": "Я кить",
+          "price": 10000
+        }
+      ]
+    }
+  ]
+}

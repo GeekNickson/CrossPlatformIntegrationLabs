@@ -2,3 +2,11 @@
 /.idea/
 /JAXP-StAX-lab2/target/
 /JAXP-StAX-lab2/src/test/
+/JAXB-lab4/.idea/
+/JAXB-lab4/target/
+/JAXP-XSLT-lab3/.idea/
+/JAXP-XSLT-lab3/target/
+/JSON-lab5/.gitignore
+/JSON-lab5/.mvn/
+/JSON-lab5/frontend/.gitignore
+/JSON-lab5/frontend/README.md
